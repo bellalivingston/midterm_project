@@ -9,6 +9,19 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Midterm Report
+- Synchronize the project environment using the `make install` rule in the terminal from the project directory.o
+
+- To build the midterm report, type `make Report` into the terminal from the project directory.
+
+- It will build `midterm_report.Rmd` and write `midterm.html` to the project directory.
+
+- To customize the midterm report, toggle the `env` value in `midterm_report.Rmd` between
+  `age_cont` and `age_cat`, then use the `make Report` rule. `age_cont` will yield graphical outputs for
+  the continuous age analysis, and `age_cat` will yield graphical
+  outputs for the categorical age analysis. The default setting is the
+  continuous analysis.
+  
 # Project details
 
 `points_by_age.R`
@@ -26,14 +39,6 @@ knitr::opts_chunk$set(echo = TRUE)
  1.  **Team-level shooting efficiency** (field goals made vs. field goals attempted),
  2. **Player-level shooting efficiency**, and
  3. A **Player Impact Score** that includes offensive and defensive contributions.
-
-
-# Midterm Report
-- To build the midterm report [insert make rule]
-
-- It will build the `midterm_report.Rmd` file.
-
-- To customize the midterm report, toggle the "env" value between "age_cont" and "age_cat." "age_cont" will yield graphical outputs for the continuous age analysis, and "age_cat" will yield graphical outputs for the categorical age analysis. The default setting is the continuous analysis. 
 
 
 

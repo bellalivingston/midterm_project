@@ -36,7 +36,7 @@ To evaluate how efficiently each team converts its scoring opportunities, we cal
 ```{r, team-efficiency, echo =FALSE}
 team_eff_small <-
   readRDS(
-    here::here("output", "team_eff_small.rds"))
+    here::here("output/objects", "team_eff_small.rds"))
 
 knitr::kable(team_eff_small)
 ```
@@ -45,11 +45,11 @@ Then, To highlight the players who make the most of their scoring opportunities,
 ```{r, player-efficiency, echo =FALSE}
 player_eff <-
   readRDS(
-    here::here("output", "player_eff.rds")
+    here::here("output/objects", "player_eff.rds")
   )
 
 
-knitr::include_graphics(here::here("output", "top_players_eff.png"))
+knitr::include_graphics(here::here("output/figures", "top_players_eff.png"))
 ```
 
 Based on these analyses, we created an impact rank to identify the top 20 players across all teams by integrating five key performance variables generated in our code pipeline: points scored (PTS), total rebounds collected (TRB), assists directly leading to successful scoring plays (AST), defensive steals (STL), and blocked shot attempts (BLK). These metrics were extracted from our cleaned dataset and combined to form a composite ranking that reflects each player’s overall on-court contribution, rather than focusing on a single statistic in isolation.
@@ -59,10 +59,10 @@ Based on these analyses, we created an impact rank to identify the top 20 player
 
 impact_rank<-
   readRDS(
-    here::here("output", "impact_rank.rds")
+    here::here("output/objects", "impact_rank.rds")
   )
   
-knitr::include_graphics(here::here("output", "top_players_impact.png"))
+knitr::include_graphics(here::here("output/figures", "top_players_impact.png"))
                         
 ```
 # Graphical Analysis
