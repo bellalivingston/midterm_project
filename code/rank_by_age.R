@@ -17,6 +17,7 @@ age_rank <-
   ggplot(data, aes(x = Age, y = Rk)) +
   geom_point(alpha = 0.6) +     
   scale_y_reverse() + 
+  geom_smooth(method = "lm", se = FALSE) +
   labs(x = "Age", y = "Player Rank", title = "Player Rank by Age") +
   theme_minimal()
 

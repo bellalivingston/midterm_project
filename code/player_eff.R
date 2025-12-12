@@ -102,17 +102,17 @@ p_impact <- ggplot(
 # Save team efficiency
 saveRDS(
   team_eff_small,
-  file = here::here("output", "team_eff_small.rds")
+  file = here::here("output/objects", "team_eff_small.rds")
 )
 
 # Save player efficiency
 saveRDS(
   player_eff,
-  file = here::here("output", "player_eff.rds")
+  file = here::here("output/objects", "player_eff.rds")
 )
 
 ggsave(
-  filename = here::here("output", "top_players_eff.png"),
+  filename = here::here("output/figures", "top_players_eff.png"),
   plot     = p_player_eff,
   width    = 7,
   height   = 5,
@@ -122,11 +122,11 @@ ggsave(
 # Save impact rankings
 saveRDS(
   impact_rank,
-  file = here::here("output", "impact_rank.rds")
+  file = here::here("output/objects", "impact_rank.rds")
 )
 
 ggsave(
-  filename = here::here("output", "top_players_impact.png"),
+  filename = here::here("output/figures", "top_players_impact.png"),
   plot     = p_impact,
   width    = 7,
   height   = 5,

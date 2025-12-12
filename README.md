@@ -3,6 +3,20 @@ README for Midterm Project
 Bella, Treasure, Sofia
 2025-11-20
 
+# Midterm Report
+- Synchronize the project environment using the `make install` rule in the terminal from the project directory.o
+
+- To build the midterm report, type `make Report` into the terminal from the project directory.
+
+- It will build `midterm_report.Rmd` and write `midterm.html` to the project directory.
+
+- To customize the midterm report, toggle the `env` value in `midterm_report.Rmd` between
+  `age_cont` and `age_cat`, then use the `make Report` rule. `age_cont` will yield graphical outputs for
+  the continuous age analysis, and `age_cat` will yield graphical
+  outputs for the categorical age analysis. The default setting is the
+  continuous analysis.
+
+
 # Project details
 
 `points_by_age.R` - This code evaluates various point types by age and
@@ -30,15 +44,3 @@ and field_goal_atmpts as total attempts. These variables are both
 reported per 36 minutes and reflect overall scoring efficiency. I then
 created a success ratio (field_goal / field_goal_atmpts) and ranked
 teams based on that efficiency score.
-
-# Midterm Report
-
-- To build the midterm report \[insert make rule\]
-
-- It will build the `midterm_report.Rmd` file.
-
-- To customize the midterm report, toggle the “env” value between
-  “age_cont” and “age_cat.” “age_cont” will yield graphical outputs for
-  the continuous age analysis, and “age_cat” will yield graphical
-  outputs for the categorical age analysis. The default setting is the
-  continuous analysis.
