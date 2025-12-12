@@ -8,10 +8,6 @@ init:
 install:
 	Rscript -e "renv::restore(prompt = FALSE)"
 
-# Render Report
-midterm.html: midterm.Rmd code/points_by_age.R code/rank_by_age.R
-	Rscript code/02_render_report.R
-
 # Test report with different data conditions
 testing_rule:
 	Rscript -e "message('Testing report build with rows removed'); \
@@ -25,6 +21,7 @@ testing_rule:
 	            write.csv(df_extra, 'raw_data/temp_extra.csv', row.names = FALSE); \
 	            rmarkdown::render('midterm.Rmd', quiet = TRUE, params = list(data_file = 'raw_data/temp_extra.csv'))"
 	Rscript -e "message('All tests completed successfully.')"
+	
 
 # DATA variable for analysis scripts
 DATA = raw_data/nba_2025-10-30.csv
@@ -54,3 +51,16 @@ points_cont: output/figures/points_by_age.png
 points_cat: output/figures/points_by_age_cat.png
 rank: output/figures/rank_by_age.png
 efficiency: output/figures/player_eff.png
+
+# Make report
+
+Report: midterm.Rmd
+	Rscript -e "rmarkdown::render('midterm.Rmd', output_file='midterm.html', quiet=FALSE)"
+	
+testing_html:
+	Rscript -e "message('Building HTML report with new dataset'); \
+              df <- read.csv('raw_data/f75_interim.csv'); \
+              df_new <- rbind(df, df[sample(nrow(df), 20, replace = TRUE), ]); \
+              write.csv(df_new, 'raw_data/new_data.csv', row.names = FALSE); \
+              rmarkdown::render('midterm.Rmd', output_file='midterm_new.html', quiet=FALSE, params=list(data_file='raw_data/new_data.csv'))"
+              
