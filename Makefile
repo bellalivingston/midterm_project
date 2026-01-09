@@ -1,4 +1,4 @@
-.PHONY: init install testing_rule midterm.html points_cont points_cat rank efficiency
+.PHONY: init install testing_rule points_cont points_cat rank efficiency
 
 # Initialize renv in the project 
 init:
@@ -53,14 +53,24 @@ rank: output/figures/rank_by_age.png
 efficiency: output/figures/player_eff.png
 
 # Make report
+REPORT = midterm.html
+RMD    = midterm_report.Rmd
+FIGS   = output/figures/points_by_age.png \
+         output/figures/points_by_age_cat.png \
+         output/figures/rank_by_age.png \
+         output/figures/player_eff.png
 
-Report: midterm.Rmd
-	Rscript -e "rmarkdown::render('midterm.Rmd', output_file='midterm.html', quiet=FALSE)"
+.PHONY: Report
+Report: $(REPORT)
+
+$(REPORT): $(RMD) $(DATA) $(FIGS)
+		Rscript -e "rmarkdown::render('$(RMD)', output_file='$(REPORT)', quiet=FALSE)"
+
 	
 testing_html:
 	Rscript -e "message('Building HTML report with new dataset'); \
-              df <- read.csv('raw_data/f75_interim.csv'); \
+              df <- read.csv('raw_data/temp_subset.csv'); \
               df_new <- rbind(df, df[sample(nrow(df), 20, replace = TRUE), ]); \
               write.csv(df_new, 'raw_data/new_data.csv', row.names = FALSE); \
-              rmarkdown::render('midterm.Rmd', output_file='midterm_new.html', quiet=FALSE, params=list(data_file='raw_data/new_data.csv'))"
+              rmarkdown::render('midterm_report.Rmd', output_file='midterm_new.html', quiet=FALSE, params=list(data_file='raw_data/new_data.csv'))"
               
